@@ -1,0 +1,194 @@
+@import 'tailwindcss';
+@import '../styles/gradience/tokens.css';
+
+/*
+ * Lock the Tailwind theme to Gradience tokens. Default palettes, radii, shadows
+ * and fonts are cleared so components cannot reach outside the system.
+ */
+@theme inline {
+  --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  --color-background: var(--color-background-primary);
+  --color-background-inverse: var(--color-background-inverse);
+  --color-surface: var(--color-surface-primary);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-surface-muted: var(--color-surface-muted);
+  --color-surface-selected: var(--color-surface-selected);
+  --color-fg: var(--color-text-primary);
+  --color-fg-secondary: var(--color-text-secondary);
+  --color-fg-tertiary: var(--color-text-tertiary);
+  --color-fg-inverse: var(--color-text-inverse);
+  --color-line: var(--color-border-default);
+  --color-line-strong: var(--color-border-strong);
+  --color-line-subtle: var(--color-border-subtle);
+  --color-line-emphasis: var(--color-border-emphasis);
+  --color-signal: var(--color-signal-opportunity);
+  --color-selected: var(--color-signal-selected);
+  --color-action: var(--color-action-primary);
+  --color-on-action: var(--color-action-on-primary);
+  --color-viz-neutral: var(--color-viz-neutral);
+  --color-viz-current: var(--color-viz-current);
+  --color-viz-boundary: var(--color-viz-boundary);
+
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-control: 5px;
+  --radius-md: 6px;
+  --radius-full: 9999px;
+
+  --ease-controlled: var(--motion-ease-controlled);
+  --animate-reveal: gradience-reveal var(--motion-duration-reveal) var(--motion-ease-controlled) both;
+  --animate-quantify: gradience-quantify var(--motion-duration-quantify) var(--motion-ease-controlled) both;
+  --animate-illuminate: gradience-illuminate var(--motion-duration-quantify) var(--motion-ease-controlled) both;
+}
+
+@keyframes gradience-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes gradience-quantify {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes gradience-illuminate {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility duration-respond {
+  transition-duration: var(--motion-duration-respond);
+}
+
+@utility duration-quantify {
+  transition-duration: var(--motion-duration-quantify);
+}
+
+@utility type-display-hero {
+  font-size: var(--type-display-hero-size);
+  line-height: var(--type-display-hero-leading);
+  font-weight: 500;
+}
+@utility type-display-anchor {
+  font-size: var(--type-display-anchor-size);
+  line-height: var(--type-display-anchor-leading);
+  font-weight: 500;
+}
+@utility type-display-closing {
+  font-size: var(--type-display-closing-size);
+  line-height: var(--type-display-closing-leading);
+  font-weight: 500;
+}
+@utility type-heading-section {
+  font-size: var(--type-heading-section-size);
+  line-height: var(--type-heading-section-leading);
+  font-weight: 500;
+}
+@utility type-heading-question {
+  font-size: var(--type-heading-question-size);
+  line-height: var(--type-heading-question-leading);
+  font-weight: 500;
+}
+@utility type-body-large {
+  font-size: var(--type-body-large-size);
+  line-height: var(--type-body-large-leading);
+  font-weight: 400;
+}
+@utility type-body-default {
+  font-size: var(--type-body-default-size);
+  line-height: var(--type-body-default-leading);
+  font-weight: 400;
+}
+@utility type-label-analytical {
+  font-size: var(--type-label-analytical-size);
+  line-height: var(--type-label-analytical-leading);
+  letter-spacing: var(--type-label-analytical-tracking);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+@utility type-metric-large {
+  font-size: var(--type-metric-large-size);
+  line-height: var(--type-metric-large-leading);
+  letter-spacing: var(--type-metric-large-tracking);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+@utility type-supporting-small {
+  font-size: var(--type-supporting-small-size);
+  line-height: var(--type-supporting-small-leading);
+  font-weight: 400;
+}
+@utility type-heading-component {
+  font-size: var(--type-heading-component-size);
+  line-height: var(--type-heading-component-leading);
+  font-weight: 600;
+}
+@utility type-heading-specimen {
+  font-size: var(--type-heading-specimen-size);
+  line-height: var(--type-heading-specimen-leading);
+  font-weight: 600;
+}
+@utility type-body-small {
+  font-size: var(--type-body-small-size);
+  line-height: var(--type-body-small-leading);
+  font-weight: 400;
+}
+@utility type-ui-default {
+  font-size: var(--type-ui-default-size);
+  line-height: var(--type-ui-default-leading);
+}
+@utility type-ui-small {
+  font-size: var(--type-ui-small-size);
+  line-height: var(--type-ui-small-leading);
+}
+@utility type-ui-xsmall {
+  font-size: var(--type-ui-xsmall-size);
+  line-height: var(--type-ui-xsmall-leading);
+}
+@utility type-micro {
+  font-size: var(--type-micro-size);
+  line-height: var(--type-micro-leading);
+  font-weight: 600;
+}
+@utility type-wordmark {
+  font-size: var(--type-wordmark-size);
+  line-height: var(--type-wordmark-leading);
+  font-weight: 700;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background-primary);
+    color: var(--color-text-primary);
+  }
+  :focus-visible {
+    outline: var(--border-selected) solid var(--color-signal-selected);
+    outline-offset: 2px;
+  }
+}

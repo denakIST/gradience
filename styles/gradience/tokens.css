@@ -1,0 +1,212 @@
+/*
+ * Gradience design tokens — source: Figma "Developer Handoff / Design System" (node 20:7446).
+ * Layers: primitives (locked) -> semantic (mode mappings) -> component/visualization tokens.
+ * Components consume semantic names only; never primitive hex values.
+ */
+
+:root {
+  /* Gradience Primitives — locked */
+  --gradience-ink: #101820;
+  --gradience-canvas: #f5f4f0;
+  --gradience-white: #ffffff;
+  --gradience-slate: #5f6972;
+  --gradience-grid: #d9dde0;
+  --gradience-cyan: #22b8c7;
+
+  /* Values taken from approved component instances (table header, selected row,
+     Intelligence rules/surfaces, neutral trajectory). Not part of the brand palette. */
+  --gradience-stone: #e9e8e4;
+  --gradience-cyan-wash: #ddf4f6;
+  --gradience-ink-rule: #24313b;
+  --gradience-ink-raised: #17222c;
+  --gradience-slate-muted: #72808b;
+
+  /* Spacing scale — 0 · 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96 · 120 · 128 · 160 */
+  --space-0: 0px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-120: 120px;
+  --space-128: 128px;
+  --space-160: 160px;
+
+  /* Construction */
+  --border-hairline: 1px;
+  --border-selected: 2px;
+
+  /* Layout / grid */
+  --layout-page-max: 1440px;
+  --layout-content: 1248px;
+  --layout-reading: 720px;
+  --layout-margin: var(--space-24);
+  --grid-columns: 12;
+  --grid-gutter: var(--space-24);
+
+  /* Typography roles — "Style names are implementation contracts." */
+  --type-display-hero-size: 76px;
+  --type-display-hero-leading: 77px;
+  --type-display-anchor-size: 58px;
+  --type-display-anchor-leading: 62px;
+  --type-display-closing-size: 48px;
+  --type-display-closing-leading: 51px;
+  --type-heading-section-size: 36px;
+  --type-heading-section-leading: 40px;
+  --type-heading-question-size: 28px;
+  --type-heading-question-leading: 34px;
+  --type-body-large-size: 18px;
+  --type-body-large-leading: 31px;
+  --type-body-default-size: 16px;
+  --type-body-default-leading: 25px;
+  --type-label-analytical-size: 12px;
+  --type-label-analytical-leading: 16px;
+  --type-label-analytical-tracking: 1.8px;
+  --type-metric-large-size: 44px;
+  --type-metric-large-leading: 60px;
+  --type-metric-large-tracking: -1.5px;
+  --type-supporting-small-size: 11px;
+  --type-supporting-small-leading: 15px;
+
+  /* Component typography, as used inside approved component instances */
+  --type-heading-component-size: 24px;
+  --type-heading-component-leading: 33px;
+  --type-heading-specimen-size: 22px;
+  --type-heading-specimen-leading: 30px;
+  --type-body-small-size: 14px;
+  --type-body-small-leading: 21px;
+  --type-ui-default-size: 14px;
+  --type-ui-default-leading: 19px;
+  --type-ui-small-size: 13px;
+  --type-ui-small-leading: 18px;
+  --type-ui-xsmall-size: 12px;
+  --type-ui-xsmall-leading: 16px;
+  --type-micro-size: 10px;
+  --type-micro-leading: 14px;
+  --type-wordmark-size: 17px;
+  --type-wordmark-leading: 23px;
+
+  /* Visualization grammar — exact values from "Canonical visualization grammar" */
+  --viz-line-grid: 1px;
+  --viz-line-contour: 1px;
+  --viz-line-trajectory-neutral: 1.5px;
+  --viz-line-trajectory-selected: 3px;
+  --viz-line-decision-boundary: 1px;
+  --viz-opacity-grid: 0.65;
+  --viz-opacity-contour-outer: 0.33;
+  --viz-opacity-contour-middle: 0.5;
+  --viz-opacity-contour-inner: 0.7;
+  --viz-opacity-trajectory-neutral: 0.5;
+  --viz-opacity-decision-boundary: 0.4;
+  --viz-point-current: 8px;
+  --viz-point-selected: 14px;
+  --viz-point-ring: 3px;
+
+  /*
+   * Motion — Figma specifies character ("Slow · controlled", reveal / respond /
+   * diverge / quantify / illuminate) but no numeric values. Durations below are
+   * implementation values chosen to honour "slow · controlled".
+   */
+  --motion-ease-controlled: cubic-bezier(0.22, 0, 0, 1);
+  --motion-duration-respond: 240ms;
+  --motion-duration-quantify: 700ms;
+  --motion-duration-reveal: 1200ms;
+  --motion-stagger-illuminate: 120ms;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --layout-margin: var(--space-48);
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --layout-margin: var(--space-96);
+  }
+}
+
+/* Responsive simplification: step display roles down to the next approved role
+   instead of inventing intermediate sizes. */
+@media (max-width: 767px) {
+  :root {
+    --type-display-hero-size: var(--type-display-closing-size);
+    --type-display-hero-leading: var(--type-display-closing-leading);
+    --type-display-anchor-size: var(--type-heading-section-size);
+    --type-display-anchor-leading: var(--type-heading-section-leading);
+    --type-display-closing-size: 36px;
+    --type-display-closing-leading: 40px;
+    --type-heading-section-size: var(--type-heading-question-size);
+    --type-heading-section-leading: var(--type-heading-question-leading);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-respond: 0ms;
+    --motion-duration-quantify: 0ms;
+    --motion-duration-reveal: 0ms;
+    --motion-stagger-illuminate: 0ms;
+  }
+}
+
+/* Gradience Light — editorial / marketing context (default) */
+:root,
+[data-mode='light'] {
+  --color-background-primary: var(--gradience-canvas);
+  --color-background-inverse: var(--gradience-ink);
+  --color-surface-primary: var(--gradience-white);
+  --color-surface-raised: var(--gradience-white);
+  --color-surface-muted: var(--gradience-stone);
+  --color-surface-selected: var(--gradience-cyan-wash);
+  --color-text-primary: var(--gradience-ink);
+  --color-text-secondary: var(--gradience-slate);
+  --color-text-tertiary: var(--gradience-slate);
+  --color-text-inverse: var(--gradience-white);
+  --color-border-default: var(--gradience-grid);
+  --color-border-strong: var(--gradience-slate);
+  --color-border-subtle: var(--gradience-grid);
+  --color-border-emphasis: var(--gradience-ink);
+  --color-signal-opportunity: var(--gradience-cyan);
+  --color-signal-selected: var(--gradience-cyan);
+  --color-action-primary: var(--gradience-cyan);
+  --color-action-on-primary: var(--gradience-ink);
+  --color-status-selected: var(--gradience-cyan);
+  --color-viz-neutral: var(--gradience-slate);
+  --color-viz-current: var(--gradience-ink);
+  --color-viz-boundary: var(--gradience-slate);
+}
+
+/* Gradience Intelligence — DecisionOS / analytical context */
+[data-mode='intelligence'] {
+  --color-background-primary: var(--gradience-ink);
+  --color-background-inverse: var(--gradience-canvas);
+  --color-surface-primary: var(--gradience-ink);
+  --color-surface-raised: var(--gradience-ink-raised);
+  --color-surface-muted: var(--gradience-ink-rule);
+  --color-surface-selected: var(--gradience-ink-raised);
+  --color-text-primary: var(--gradience-white);
+  --color-text-secondary: var(--gradience-grid);
+  --color-text-tertiary: var(--gradience-slate);
+  --color-text-inverse: var(--gradience-ink);
+  --color-border-default: var(--gradience-slate);
+  --color-border-strong: var(--gradience-grid);
+  --color-border-subtle: var(--gradience-ink-rule);
+  --color-border-emphasis: var(--gradience-grid);
+  --color-signal-opportunity: var(--gradience-cyan);
+  --color-signal-selected: var(--gradience-cyan);
+  --color-action-primary: var(--gradience-cyan);
+  --color-action-on-primary: var(--gradience-ink);
+  --color-status-selected: var(--gradience-cyan);
+  --color-viz-neutral: var(--gradience-slate-muted);
+  --color-viz-current: var(--gradience-white);
+  --color-viz-boundary: var(--gradience-slate);
+}
+
+[data-mode] {
+  color: var(--color-text-primary);
+}
