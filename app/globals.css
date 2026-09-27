@@ -39,6 +39,7 @@
   --color-viz-boundary: var(--color-viz-boundary);
 
   --radius-none: 0px;
+  --radius-xs: 3px;
   --radius-sm: 4px;
   --radius-control: 5px;
   --radius-md: 6px;

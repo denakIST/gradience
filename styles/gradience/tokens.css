@@ -96,13 +96,14 @@
   --viz-line-trajectory-neutral: 1.5px;
   --viz-line-trajectory-selected: 3px;
   --viz-line-decision-boundary: 1px;
-  --viz-opacity-grid: 0.65;
-  --viz-opacity-contour-outer: 0.33;
-  --viz-opacity-contour-middle: 0.5;
-  --viz-opacity-contour-inner: 0.7;
-  --viz-opacity-trajectory-neutral: 0.5;
+  /* Rendered values from the canonical Opportunity Surface (Figma 20:8055). */
+  --viz-opacity-grid: 0.0065;
+  --viz-opacity-contour-outer: 0.0033;
+  --viz-opacity-contour-middle: 0.005;
+  --viz-opacity-contour-inner: 0.007;
+  --viz-opacity-trajectory-neutral: 0.01;
   --viz-opacity-decision-boundary: 0.4;
-  --viz-point-current: 8px;
+  --viz-point-current: 9px;
   --viz-point-selected: 14px;
   --viz-point-ring: 3px;
 

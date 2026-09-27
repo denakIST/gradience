@@ -4,12 +4,12 @@ import { SectionShell } from './section-shell'
 
 function SpecList({ label, items }: { label: string; items: { name: string; value: string }[] }) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col">
       <AnalyticalLabel tone="signal">{label}</AnalyticalLabel>
       <dl className="flex flex-col">
         {items.map((item) => (
           <div key={item.name} className="flex justify-between gap-4 border-b border-line py-3">
-            <dt className="type-ui-small text-fg">{item.name}</dt>
+            <dt className="type-ui-small font-semibold text-fg">{item.name}</dt>
             <dd className="type-ui-small text-fg-secondary tabular-nums">{item.value}</dd>
           </div>
         ))}
@@ -30,7 +30,6 @@ export function VisualizationGrammar() {
       <div data-mode="intelligence">
         <VisualizationContainer description="Canonical opportunity surface: current point at baseline 100, Scenario 03 selected direction with value up 8.7 percent or 8.7 million dollars, 82 percent confidence.">
           <OpportunitySurface
-            decisionBoundaryX={60}
             selected={{
               label: 'Scenario 03 · Selected direction',
               value: 'Δ VALUE +8.7% · +$8.7M',
@@ -45,7 +44,7 @@ export function VisualizationGrammar() {
         <SpecList label="Opacity · Exact" items={opacities} />
         <div className="flex flex-col gap-4">
           <AnalyticalLabel tone="signal">Required anatomy</AnalyticalLabel>
-          <p className="type-body-large text-pretty text-fg">
+          <p className="type-body-default text-pretty text-fg">
             Annotation typography · axis / grid treatment · uncertainty contours · current point · selected point ·
             confidence range · decision boundary.
           </p>
@@ -56,7 +55,7 @@ export function VisualizationGrammar() {
         </div>
       </div>
 
-      <VisualizationLegend items={grammarLegend} className="border-t border-line pt-6" />
+      <VisualizationLegend items={grammarLegend} className="border-t border-line pt-4" />
     </SectionShell>
   )
 }

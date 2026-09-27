@@ -8,6 +8,8 @@ type ConfidenceIndicatorProps = {
   high: number
   label?: string
   explanation?: string
+  /** Visual track fill. Defaults to the approved Figma treatment (390 of 600px), independent of `value`. */
+  fillPercent?: number
   className?: string
 }
 
@@ -17,6 +19,7 @@ export function ConfidenceIndicator({
   high,
   label = 'Confidence interval',
   explanation,
+  fillPercent = 65,
   className,
 }: ConfidenceIndicatorProps) {
   const labelId = useId()
@@ -35,11 +38,11 @@ export function ConfidenceIndicator({
         aria-valuemax={100}
         aria-valuenow={clamped}
         aria-valuetext={`${value}% confidence, bounded range ${low}–${high}%`}
-        className="h-3 w-full overflow-hidden rounded-sm bg-surface-muted"
+        className="h-3 w-full overflow-hidden rounded-xs bg-surface-muted"
       >
         <div
-          className="h-full origin-left animate-quantify rounded-sm bg-signal"
-          style={{ width: `${clamped}%` }}
+          className="h-full origin-left animate-quantify rounded-xs bg-signal"
+          style={{ width: `${fillPercent}%` }}
         />
       </div>
       <div className="flex justify-between gap-4 type-supporting-small text-fg-secondary tabular-nums">

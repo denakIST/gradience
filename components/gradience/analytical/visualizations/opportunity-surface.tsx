@@ -43,14 +43,20 @@ export function OpportunitySurface({
       )}
     >
       {showGrid ? (
-        <div aria-hidden="true" className="absolute inset-0 hidden opacity-(--viz-opacity-grid) sm:block">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          className="absolute inset-0 hidden size-full stroke-line-subtle sm:block"
+          style={{ strokeWidth: 'var(--viz-line-grid)', strokeOpacity: 'var(--viz-opacity-grid)' }}
+        >
           {gridStops.map((stop) => (
-            <span key={`v${stop}`} className="absolute inset-y-0 w-(--viz-line-grid) bg-line-subtle" style={{ left: `${stop}%` }} />
+            <line key={`v${stop}`} x1={stop} x2={stop} y1="0" y2="100" vectorEffect="non-scaling-stroke" />
           ))}
           {gridStops.map((stop) => (
-            <span key={`h${stop}`} className="absolute inset-x-0 h-(--viz-line-grid) bg-line-subtle" style={{ top: `${stop}%` }} />
+            <line key={`h${stop}`} x1="0" x2="100" y1={stop} y2={stop} vectorEffect="non-scaling-stroke" />
           ))}
-        </div>
+        </svg>
       ) : null}
 
       {showContours ? (
@@ -60,9 +66,9 @@ export function OpportunitySurface({
           preserveAspectRatio="none"
           className="absolute inset-0 hidden size-full fill-none stroke-viz-neutral sm:block"
         >
-          <ellipse cx="72" cy="38" rx="29" ry="29" vectorEffect="non-scaling-stroke" style={{ strokeWidth: 'var(--viz-line-contour)', opacity: 'var(--viz-opacity-contour-outer)' }} />
-          <ellipse cx="72" cy="38" rx="19" ry="18.5" vectorEffect="non-scaling-stroke" style={{ strokeWidth: 'var(--viz-line-contour)', opacity: 'var(--viz-opacity-contour-middle)' }} />
-          <ellipse cx="72" cy="38" rx="9" ry="10" vectorEffect="non-scaling-stroke" style={{ strokeWidth: 'var(--viz-line-contour)', opacity: 'var(--viz-opacity-contour-inner)' }} />
+          <ellipse cx="50" cy="45" rx="32" ry="29" vectorEffect="non-scaling-stroke" style={{ strokeWidth: 'var(--viz-line-contour)', strokeOpacity: 'var(--viz-opacity-contour-outer)' }} />
+          <ellipse cx="52" cy="44.5" rx="21" ry="18.5" vectorEffect="non-scaling-stroke" style={{ strokeWidth: 'var(--viz-line-contour)', strokeOpacity: 'var(--viz-opacity-contour-middle)' }} />
+          <ellipse cx="54" cy="43" rx="10" ry="10" vectorEffect="non-scaling-stroke" style={{ strokeWidth: 'var(--viz-line-contour)', strokeOpacity: 'var(--viz-opacity-contour-inner)' }} />
         </svg>
       ) : null}
 
@@ -78,7 +84,7 @@ export function OpportunitySurface({
               <path
                 d={path.d}
                 vectorEffect="non-scaling-stroke"
-                style={{ strokeWidth: 'var(--viz-line-trajectory-neutral)', opacity: 'var(--viz-opacity-trajectory-neutral)' }}
+                style={{ strokeWidth: 'var(--viz-line-trajectory-neutral)', strokeOpacity: 'var(--viz-opacity-trajectory-neutral)' }}
               />
             </svg>
           ))
@@ -119,7 +125,7 @@ export function OpportunitySurface({
 
       <div
         className="absolute flex flex-col gap-1"
-        style={{ left: `${currentPoint.x - 0.5}%`, top: `calc(${currentPoint.y}% + 24px)` }}
+        style={{ left: `${currentPoint.x}%`, top: `calc(${currentPoint.y}% + 32px)` }}
       >
         <span className="type-label-analytical text-fg-secondary">{current.label}</span>
         {current.detail ? (

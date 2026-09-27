@@ -80,7 +80,6 @@ function ModePanel({ mode, eyebrow, title, description, display, primaryLabel }:
       >
         <OpportunitySurface
           size="compact"
-          decisionBoundaryX={60}
           currentPoint={{ x: 7, y: 73 }}
           selectedPoint={{ x: 82, y: 16 }}
           selected={{ label: 'Scenario 03 · Selected', value: 'Δ VALUE +8.7%', detail: 'Confidence 82% · 78-86% range' }}
