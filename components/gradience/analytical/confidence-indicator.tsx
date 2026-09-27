@@ -8,18 +8,16 @@ type ConfidenceIndicatorProps = {
   high: number
   label?: string
   explanation?: string
-  /** Visual track fill. Defaults to the approved Figma treatment (390 of 600px), independent of `value`. */
-  fillPercent?: number
   className?: string
 }
 
+/** Quantitative component: the fill width is always derived from `value`, never set independently. */
 export function ConfidenceIndicator({
   value,
   low,
   high,
   label = 'Confidence interval',
   explanation,
-  fillPercent = 65,
   className,
 }: ConfidenceIndicatorProps) {
   const labelId = useId()
@@ -42,7 +40,7 @@ export function ConfidenceIndicator({
       >
         <div
           className="h-full origin-left animate-quantify rounded-xs bg-signal"
-          style={{ width: `${fillPercent}%` }}
+          style={{ width: `${clamped}%` }}
         />
       </div>
       <div className="flex justify-between gap-4 type-supporting-small text-fg-secondary tabular-nums">

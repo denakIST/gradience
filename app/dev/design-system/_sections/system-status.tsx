@@ -4,7 +4,7 @@ const principles = ['Clarity over decoration', 'Evidence over hype', 'Decision-m
 
 export function SystemStatus() {
   return (
-    <header data-mode="light" className="bg-background pt-18 pb-22">
+    <header data-reference-section="status" data-mode="light" className="bg-background pt-18 pb-22">
       <Container className="flex flex-col gap-16">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <Wordmark className="text-lg" />

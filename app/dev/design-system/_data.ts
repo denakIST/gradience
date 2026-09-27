@@ -115,11 +115,11 @@ export const lineWeights = [
 ]
 
 export const opacities = [
-  { name: 'grid opacity', value: '.65%' },
-  { name: 'outer contour opacity', value: '.33%' },
-  { name: 'middle contour opacity', value: '.5%' },
-  { name: 'inner contour opacity', value: '.7%' },
-  { name: 'neutral trajectory opacity', value: '1%' },
+  { name: 'grid opacity', value: '0.0065 · 0.65%' },
+  { name: 'outer contour opacity', value: '0.0033 · 0.33%' },
+  { name: 'middle contour opacity', value: '0.005 · 0.5%' },
+  { name: 'inner contour opacity', value: '0.007 · 0.7%' },
+  { name: 'neutral trajectory opacity', value: '0.01 · 1%' },
 ]
 
 export const implementationRules = [

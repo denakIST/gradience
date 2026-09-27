@@ -16,13 +16,19 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-export default function DesignSystemPage() {
+export default async function DesignSystemPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ capture?: string }>
+}) {
   if (process.env.NODE_ENV === 'production' && process.env.ENABLE_DESIGN_SYSTEM_PAGE !== 'true') {
     notFound()
   }
 
+  const { capture } = await searchParams
+
   return (
-    <main>
+    <main data-reference-capture={capture === '1' ? '' : undefined}>
       <SystemStatus />
       <TokenArchitecture />
       <Foundations />

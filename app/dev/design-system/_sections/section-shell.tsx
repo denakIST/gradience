@@ -23,6 +23,7 @@ export function SectionShell({
   return (
     <section
       aria-labelledby={`${id}-title`}
+      data-reference-section={id}
       data-mode={mode}
       className={cn('py-16 md:py-24', surface === 'surface' ? 'bg-surface' : 'bg-background')}
     >

@@ -88,7 +88,7 @@ export function ProductExample() {
         description="Opportunity surface: Scenario 03 selected direction, value up 8.7 percent or 8.7 million dollars, 82 percent confidence within a 78 to 86 percent range."
       >
         <OpportunitySurface
-
+          variant="canonical"
           selected={{
             label: 'Scenario 03 · Selected direction',
             value: 'Δ VALUE +8.7% · +$8.7M',

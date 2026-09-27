@@ -79,6 +79,7 @@ function ModePanel({ mode, eyebrow, title, description, display, primaryLabel }:
         description="Opportunity surface: Scenario 03 selected, value up 8.7 percent, 82 percent confidence."
       >
         <OpportunitySurface
+          variant="canonical"
           size="compact"
           currentPoint={{ x: 7, y: 73 }}
           selectedPoint={{ x: 82, y: 16 }}
@@ -123,7 +124,7 @@ function ModePanel({ mode, eyebrow, title, description, display, primaryLabel }:
 
 export function ModeExamples() {
   return (
-    <section aria-labelledby="modes-title" data-mode="light" className="bg-surface">
+    <section aria-labelledby="modes-title" data-reference-section="modes" data-mode="light" className="bg-surface">
       <Container className="flex flex-col gap-6 py-16 md:flex-row md:items-end md:justify-between md:py-18">
         <div className="flex flex-col gap-3.5">
           <AnalyticalLabel tone="signal">Contextual modes · One system</AnalyticalLabel>

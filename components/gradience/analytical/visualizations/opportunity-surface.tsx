@@ -3,12 +3,21 @@ import { trajectories } from './trajectory-paths'
 
 type Point = { x: number; y: number }
 
+/**
+ * - `simple`: the primary analytical signal only — selected trajectory, selected state and its annotation.
+ * - `canonical`: the complete approved grammar — grid, uncertainty contours, neutral alternatives,
+ *   current state, selected state and selected trajectory.
+ */
+export type OpportunitySurfaceVariant = 'simple' | 'canonical'
+
 type OpportunitySurfaceProps = {
+  variant?: OpportunitySurfaceVariant
   selected: {
     label: string
     value: string
     detail?: string
   }
+  /** Rendered by the canonical variant only. */
   current?: {
     label: string
     detail?: string
@@ -16,33 +25,31 @@ type OpportunitySurfaceProps = {
   currentPoint?: Point
   selectedPoint?: Point
   decisionBoundaryX?: number
-  showAlternatives?: boolean
-  showContours?: boolean
-  showGrid?: boolean
-  size?: 'canonical' | 'compact'
+  size?: 'wide' | 'compact'
 }
 
 const gridStops = [20, 40, 60, 80]
 
 export function OpportunitySurface({
+  variant = 'canonical',
   selected,
   current = { label: 'Current', detail: 'Baseline 100' },
   currentPoint = { x: 7, y: 73 },
   selectedPoint = { x: 89, y: 16 },
   decisionBoundaryX,
-  showAlternatives = true,
-  showContours = true,
-  showGrid = true,
-  size = 'canonical',
+  size = 'wide',
 }: OpportunitySurfaceProps) {
+  const isCanonical = variant === 'canonical'
+
   return (
     <div
+      data-variant={variant}
       className={cn(
         'relative h-64 w-full sm:h-auto',
-        size === 'canonical' ? 'sm:aspect-[1248/460]' : 'sm:aspect-[632/330]',
+        size === 'wide' ? 'sm:aspect-[1248/460]' : 'sm:aspect-[632/330]',
       )}
     >
-      {showGrid ? (
+      {isCanonical ? (
         <svg
           aria-hidden="true"
           viewBox="0 0 100 100"
@@ -59,7 +66,7 @@ export function OpportunitySurface({
         </svg>
       ) : null}
 
-      {showContours ? (
+      {isCanonical ? (
         <svg
           aria-hidden="true"
           viewBox="0 0 100 100"
@@ -72,7 +79,7 @@ export function OpportunitySurface({
         </svg>
       ) : null}
 
-      {showAlternatives
+      {isCanonical
         ? trajectories.alternatives.map((path) => (
             <svg
               key={path.d}
@@ -112,26 +119,30 @@ export function OpportunitySurface({
         />
       ) : null}
 
-      <span
-        aria-hidden="true"
-        className="absolute size-(--viz-point-current) -translate-x-1/2 -translate-y-1/2 rounded-full bg-viz-current"
-        style={{ left: `${currentPoint.x}%`, top: `${currentPoint.y}%` }}
-      />
+      {isCanonical ? (
+        <span
+          aria-hidden="true"
+          className="absolute size-(--viz-point-current) -translate-x-1/2 -translate-y-1/2 rounded-full bg-viz-current"
+          style={{ left: `${currentPoint.x}%`, top: `${currentPoint.y}%` }}
+        />
+      ) : null}
       <span
         aria-hidden="true"
         className="absolute size-(--viz-point-selected) -translate-x-1/2 -translate-y-1/2 rounded-full border-(length:--viz-point-ring) border-surface bg-selected"
         style={{ left: `${selectedPoint.x}%`, top: `${selectedPoint.y}%` }}
       />
 
-      <div
-        className="absolute flex flex-col gap-1"
-        style={{ left: `${currentPoint.x}%`, top: `calc(${currentPoint.y}% + 32px)` }}
-      >
-        <span className="type-label-analytical text-fg-secondary">{current.label}</span>
-        {current.detail ? (
-          <span className="hidden type-supporting-small uppercase text-fg-secondary sm:block">{current.detail}</span>
-        ) : null}
-      </div>
+      {isCanonical ? (
+        <div
+          className="absolute flex flex-col gap-1"
+          style={{ left: `${currentPoint.x}%`, top: `calc(${currentPoint.y}% + 32px)` }}
+        >
+          <span className="type-label-analytical text-fg-secondary">{current.label}</span>
+          {current.detail ? (
+            <span className="hidden type-supporting-small uppercase text-fg-secondary sm:block">{current.detail}</span>
+          ) : null}
+        </div>
+      ) : null}
 
       <div className="absolute top-[8%] left-[44%] flex max-w-[50%] flex-col gap-1 sm:left-[61%]">
         <span className="type-label-analytical text-signal">{selected.label}</span>

@@ -30,6 +30,7 @@ export function VisualizationGrammar() {
       <div data-mode="intelligence">
         <VisualizationContainer description="Canonical opportunity surface: current point at baseline 100, Scenario 03 selected direction with value up 8.7 percent or 8.7 million dollars, 82 percent confidence.">
           <OpportunitySurface
+            variant="canonical"
             selected={{
               label: 'Scenario 03 · Selected direction',
               value: 'Δ VALUE +8.7% · +$8.7M',

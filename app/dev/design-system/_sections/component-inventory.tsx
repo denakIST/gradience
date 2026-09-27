@@ -200,9 +200,7 @@ export function ComponentInventory() {
         </Tabs>
         <VisualizationContainer description="Opportunity surface: Scenario 03 selected direction, value up 8.7 percent at 82 percent confidence, from a current baseline of 100.">
           <OpportunitySurface
-            showAlternatives={false}
-            showContours={false}
-            showGrid={false}
+            variant="simple"
             selected={{ label: 'Scenario 03', value: 'Δ VALUE +8.7%', detail: 'Confidence 82%' }}
           />
         </VisualizationContainer>

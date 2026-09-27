@@ -193,3 +193,13 @@
     outline-offset: 2px;
   }
 }
+
+/* Deterministic reference capture (/dev/design-system?capture=1): render final states only. */
+[data-reference-capture],
+[data-reference-capture] *,
+[data-reference-capture] *::before,
+[data-reference-capture] *::after {
+  animation: none !important;
+  transition: none !important;
+  caret-color: transparent !important;
+}
