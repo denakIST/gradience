@@ -16,7 +16,7 @@ export function MarketingNavigation({ links, cta, className }: MarketingNavigati
     <nav
       aria-label="Primary"
       data-mode="light"
-      className={cn('flex h-18 items-center justify-between gap-6 border-b border-line bg-background px-4 md:px-8', className)}
+      className={cn('flex h-18 items-center justify-between gap-6 border-b border-line bg-background px-4 md:pr-8 md:pl-16', className)}
     >
       <Link href="/" aria-label="Gradience home">
         <Wordmark />
@@ -50,7 +50,7 @@ export function ApplicationNavigation({ links, activeHref, className }: Applicat
     <nav
       aria-label="DecisionOS"
       data-mode="intelligence"
-      className={cn('flex h-18 items-center justify-between gap-6 border-b border-line-subtle bg-background px-4 md:px-8', className)}
+      className={cn('flex h-18 items-center justify-between gap-6 border-b border-line-subtle bg-background px-4 md:pr-8 md:pl-16', className)}
     >
       <Link href="/" aria-label="Gradience home">
         <Wordmark />

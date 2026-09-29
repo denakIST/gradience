@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import {
   AnalyticalLabel,
   ApplicationNavigation,
@@ -27,7 +26,7 @@ import {
   scenarioRows,
   scenarios,
 } from '../_data'
-import { InventoryLabel, SectionShell } from './section-shell'
+import { InventoryLabel, ScenarioStateSpec, SectionShell } from './section-shell'
 
 export function ComponentInventory() {
   return (
@@ -92,7 +91,7 @@ export function ComponentInventory() {
           <div className="flex flex-col gap-4.5 lg:w-147.5">
             <AnalyticalLabel>03 · Investment optimization</AnalyticalLabel>
             <p className="type-heading-section text-balance text-fg">Where should the next dollar go?</p>
-            <p className="type-body-default text-pretty text-fg-secondary">
+            <p className="type-body-default max-w-116 text-fg-secondary">
               Understand response curves, diminishing returns and business constraints to identify more productive
               allocations of capital.
             </p>
@@ -134,22 +133,7 @@ export function ComponentInventory() {
                 <ScenarioIndicator key={scenario.value} {...scenario} />
               ))}
             </ScenarioSelector>
-            <dl className="flex max-w-77.5 flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <AnalyticalLabel as="dt">Default state</AnalyticalLabel>
-                <dd className="type-supporting-small text-fg-secondary">
-                  stroke: Structural Grid · marker: Grid · arrow: Slate
-                </dd>
-              </div>
-              <div className="flex flex-col gap-1">
-                <AnalyticalLabel as="dt" tone="signal">
-                  Selected state
-                </AnalyticalLabel>
-                <dd className="type-supporting-small text-fg-secondary">
-                  strokeWidth: 2 · stroke: Signal Cyan · marker: Cyan · arrow: Cyan
-                </dd>
-              </div>
-            </dl>
+            <ScenarioStateSpec />
             <ConfidenceIndicator
               value={82}
               low={78}
@@ -175,17 +159,17 @@ export function ComponentInventory() {
           <InventoryLabel name="Input/Default" usage="Persistent label, visible boundary and concise helper text." />
           <Input
             label="Decision name"
+            hideLabel
             defaultValue="Q4 growth allocation"
             helper="Use semantic border and text tokens; validation must never depend on color alone."
           />
-          <Input label="Decision owner" defaultValue="" error="Assign an accountable owner before review." />
         </div>
       </div>
 
       <div data-mode="intelligence" className="-mx-(--layout-margin) flex flex-col gap-4.5 bg-background px-(--layout-margin) py-8 lg:mx-0 lg:px-0">
         <div className="lg:px-0">
           <InventoryLabel
-            name="Tabs · Visualization container/Opportunity Surface"
+            name={'Tabs · Visualization container/\u200BOpportunity Surface'}
             usage="Tabs reveal analytical views. The container is the canonical visualization grammar."
           />
         </div>
@@ -204,9 +188,6 @@ export function ComponentInventory() {
             selected={{ label: 'Scenario 03', value: 'Δ VALUE +8.7%', detail: 'Confidence 82%' }}
           />
         </VisualizationContainer>
-        <Link href="#grammar" className="type-supporting-small text-fg-secondary underline underline-offset-4">
-          See canonical visualization grammar
-        </Link>
       </div>
     </SectionShell>
   )

@@ -8,7 +8,7 @@ function SpecList({ label, items }: { label: string; items: { name: string; valu
       <AnalyticalLabel tone="signal">{label}</AnalyticalLabel>
       <dl className="flex flex-col">
         {items.map((item) => (
-          <div key={item.name} className="flex justify-between gap-4 border-b border-line py-3">
+          <div key={item.name} className="flex justify-between gap-4 border-b border-line py-2.5">
             <dt className="type-ui-small font-semibold text-fg">{item.name}</dt>
             <dd className="type-ui-small text-fg-secondary tabular-nums">{item.value}</dd>
           </div>

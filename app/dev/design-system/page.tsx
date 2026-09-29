@@ -4,6 +4,7 @@ import { AnalyticalFamily } from './_sections/analytical-family'
 import { ComponentInventory } from './_sections/component-inventory'
 import { Foundations } from './_sections/foundations'
 import { ImplementationNotes } from './_sections/implementation-notes'
+import { LightDarkSystem } from './_sections/light-dark-system'
 import { ModeExamples } from './_sections/mode-examples'
 import { ProductExample } from './_sections/product-example'
 import { SystemStatus } from './_sections/system-status'
@@ -37,6 +38,7 @@ export default async function DesignSystemPage({
       <VisualizationGrammar />
       <AnalyticalFamily />
       <ModeExamples />
+      <LightDarkSystem />
       <ImplementationNotes />
     </main>
   )

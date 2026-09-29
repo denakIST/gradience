@@ -25,17 +25,17 @@ export const semanticTokens = [
 ]
 
 export const typeSpecimens = [
-  { name: 'Typography/Display/Hero', spec: '76 / 77 · Medium', sample: 'Model what could happen.' },
-  { name: 'Typography/Display/Anchor', spec: '58 / 62 · Medium', sample: 'Decision clarity, systemized.' },
-  { name: 'Typography/Display/Closing', spec: '48 / 51 · Medium', sample: 'Start with the decision.' },
-  { name: 'Typography/Heading/Section', spec: '36 / 40 · Medium', sample: 'Evidence before commitment.' },
-  { name: 'Typography/Heading/Question', spec: '28 / 34 · Medium', sample: 'Where should the next dollar go?' },
-  { name: 'Typography/Body/Large', spec: '18 / 31 · Regular', sample: 'Designed for executive reading and analytical confidence.' },
-  { name: 'Typography/Body/Default', spec: '16 / 25 · Regular', sample: 'Quantify assumptions, uncertainty and tradeoffs before capital is committed.' },
-  { name: 'Typography/Label/Analytical', spec: '12 / Auto · SemiBold', sample: 'SCENARIO 03 · SELECTED DIRECTION', signal: true },
-  { name: 'Typography/Metric/Large', spec: '44 / Auto · Medium', sample: '$18.6M · 82%', metric: true },
-  { name: 'Typography/Supporting/Small', spec: '11 / Auto · Regular', sample: 'Reviewed Sep 24 · 78–86% range' },
-]
+  { name: 'Typography/Display/Hero', spec: '76 / 77 · Medium', sample: 'Model what could happen.', preview: 'display' },
+  { name: 'Typography/Display/Anchor', spec: '58 / 62 · Medium', sample: 'Decision clarity, systemized.', preview: 'display' },
+  { name: 'Typography/Display/Closing', spec: '48 / 51 · Medium', sample: 'Start with the decision.', preview: 'display' },
+  { name: 'Typography/Heading/Section', spec: '36 / 40 · Medium', sample: 'Evidence before commitment.', preview: 'heading' },
+  { name: 'Typography/Heading/Question', spec: '28 / 34 · Medium', sample: 'Where should the next dollar go?', preview: 'heading' },
+  { name: 'Typography/Body/Large', spec: '18 / 31 · Regular', sample: 'Designed for executive reading and analytical confidence.', preview: 'body' },
+  { name: 'Typography/Body/Default', spec: '16 / 25 · Regular', sample: 'Quantify assumptions, uncertainty and tradeoffs before capital is committed.', preview: 'body' },
+  { name: 'Typography/Label/Analytical', spec: '12 / Auto · SemiBold', sample: 'SCENARIO 03 · SELECTED DIRECTION', preview: 'signal' },
+  { name: 'Typography/Metric/Large', spec: '44 / Auto · Medium', sample: '$18.6M · 82%', preview: 'metric' },
+  { name: 'Typography/Supporting/Small', spec: '11 / Auto · Regular', sample: 'Reviewed Sep 24 · 78–86% range', preview: 'body' },
+] as const
 
 export const spacingScale = [0, 4, 8, 12, 16, 24, 32, 48, 64, 96, 120, 128, 160]
 
@@ -115,11 +115,11 @@ export const lineWeights = [
 ]
 
 export const opacities = [
-  { name: 'grid opacity', value: '0.0065 · 0.65%' },
-  { name: 'outer contour opacity', value: '0.0033 · 0.33%' },
-  { name: 'middle contour opacity', value: '0.005 · 0.5%' },
-  { name: 'inner contour opacity', value: '0.007 · 0.7%' },
-  { name: 'neutral trajectory opacity', value: '0.01 · 1%' },
+  { name: 'grid opacity', value: '.65' },
+  { name: 'outer contour opacity', value: '.33' },
+  { name: 'middle contour opacity', value: '.5' },
+  { name: 'inner contour opacity', value: '.7' },
+  { name: 'neutral trajectory opacity', value: '.5' },
 ]
 
 export const implementationRules = [

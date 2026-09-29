@@ -6,11 +6,12 @@ import { AnalyticalLabel } from './analytical-label'
 
 type InputProps = Omit<React.ComponentProps<'input'>, 'size'> & {
   label: string
+  hideLabel?: boolean
   helper?: string
   error?: string
 }
 
-export function Input({ label, helper, error, id, className, ...props }: InputProps) {
+export function Input({ label, hideLabel, helper, error, id, className, ...props }: InputProps) {
   const generatedId = useId()
   const inputId = id ?? generatedId
   const helperId = `${inputId}-helper`
@@ -19,7 +20,7 @@ export function Input({ label, helper, error, id, className, ...props }: InputPr
 
   return (
     <div className={cn('flex flex-col gap-2', className)}>
-      <AnalyticalLabel as="label" htmlFor={inputId}>
+      <AnalyticalLabel as="label" htmlFor={inputId} className={hideLabel ? 'sr-only' : undefined}>
         {label}
       </AnalyticalLabel>
       <input

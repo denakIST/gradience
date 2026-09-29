@@ -119,30 +119,26 @@ export function OpportunitySurface({
         />
       ) : null}
 
-      {isCanonical ? (
-        <span
-          aria-hidden="true"
-          className="absolute size-(--viz-point-current) -translate-x-1/2 -translate-y-1/2 rounded-full bg-viz-current"
-          style={{ left: `${currentPoint.x}%`, top: `${currentPoint.y}%` }}
-        />
-      ) : null}
+      <span
+        aria-hidden="true"
+        className="absolute size-(--viz-point-current) -translate-x-1/2 -translate-y-1/2 rounded-full bg-viz-current"
+        style={{ left: `${currentPoint.x}%`, top: `${currentPoint.y}%` }}
+      />
       <span
         aria-hidden="true"
         className="absolute size-(--viz-point-selected) -translate-x-1/2 -translate-y-1/2 rounded-full border-(length:--viz-point-ring) border-surface bg-selected"
         style={{ left: `${selectedPoint.x}%`, top: `${selectedPoint.y}%` }}
       />
 
-      {isCanonical ? (
-        <div
-          className="absolute flex flex-col gap-1"
-          style={{ left: `${currentPoint.x}%`, top: `calc(${currentPoint.y}% + 32px)` }}
-        >
-          <span className="type-label-analytical text-fg-secondary">{current.label}</span>
-          {current.detail ? (
-            <span className="hidden type-supporting-small uppercase text-fg-secondary sm:block">{current.detail}</span>
-          ) : null}
-        </div>
-      ) : null}
+      <div
+        className="absolute flex flex-col gap-1"
+        style={{ left: `${currentPoint.x}%`, top: `calc(${currentPoint.y}% + 32px)` }}
+      >
+        <span className="type-label-analytical text-fg-secondary">{current.label}</span>
+        {current.detail ? (
+          <span className="hidden type-supporting-small uppercase text-fg-secondary sm:block">{current.detail}</span>
+        ) : null}
+      </div>
 
       <div className="absolute top-[8%] left-[44%] flex max-w-[50%] flex-col gap-1 sm:left-[61%]">
         <span className="type-label-analytical text-signal">{selected.label}</span>

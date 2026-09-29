@@ -19,11 +19,11 @@ function PathLayer({ path, className, width }: { path: { viewBox: string; d: str
 }
 
 const bars = [
-  { h: 'h-[48%]', selected: false },
-  { h: 'h-[30%]', selected: false },
-  { h: 'h-[58%]', selected: false },
-  { h: 'h-[73%]', selected: true },
-  { h: 'h-[44%]', selected: false },
+  { h: 'h-[64.8%]', selected: false },
+  { h: 'h-[40.7%]', selected: false },
+  { h: 'h-[77.8%]', selected: false },
+  { h: 'h-[98.1%]', selected: true },
+  { h: 'h-[59.3%]', selected: false },
 ]
 
 const clusters = [
@@ -50,9 +50,9 @@ const examples = [
     text: 'Driver contribution and causal evidence.',
     visual: (
       <Frame label="Measurement: five drivers, one selected">
-        <div className="absolute inset-x-[6%] top-[12%] bottom-[16%] flex items-end gap-[5%]">
+        <div className="absolute inset-x-[6%] top-[12%] bottom-[16%] flex items-end gap-[6.2%]">
           {bars.map((bar, index) => (
-            <span key={index} className={cn('w-[7.5%]', bar.h, bar.selected ? 'bg-signal' : 'bg-viz-neutral opacity-55')} />
+            <span key={index} className={cn('w-[8.5%]', bar.h, bar.selected ? 'bg-signal' : 'bg-viz-neutral opacity-55')} />
           ))}
         </div>
       </Frame>
@@ -123,16 +123,16 @@ export function AnalyticalFamily() {
         {examples.map((example) => (
           <li key={example.name} className="flex flex-col gap-3">
             {example.visual}
-            <div className="flex flex-col gap-1 sm:flex-row sm:gap-6">
-              <h3 className="type-body-default font-medium text-fg sm:w-35 sm:shrink-0">{example.name}</h3>
-              <p className="type-ui-small text-fg-secondary">{example.text}</p>
+            <div className="flex flex-col gap-1 sm:flex-row">
+              <h3 className="type-ui-small font-semibold text-fg sm:w-40 sm:shrink-0">{example.name}</h3>
+              <p className="type-supporting-small text-fg-secondary">{example.text}</p>
             </div>
           </li>
         ))}
       </ul>
-      <div className="flex flex-col gap-3 border-t border-line pt-6 md:flex-row md:gap-24">
-        <span className="type-ui-small font-medium uppercase text-signal">One family · Six meanings</span>
-        <p className="type-body-default text-fg-secondary">
+      <div className="flex flex-col gap-3 border-t border-line pt-6 md:flex-row md:gap-0">
+        <span className="type-ui-xsmall font-medium uppercase text-signal md:w-73 md:shrink-0">One family · Six meanings</span>
+        <p className="type-ui-small text-fg-secondary">
           Cyan always identifies the chosen analytical signal or direction—not every series, data point or positive
           outcome.
         </p>

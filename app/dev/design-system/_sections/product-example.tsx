@@ -16,7 +16,7 @@ import {
   VisualizationContainer,
 } from '@/components/gradience'
 import { analyticalTabs, applicationLinks, scenarioColumns, scenarioRows, scenarios } from '../_data'
-import { SectionShell } from './section-shell'
+import { ScenarioStateSpec, SectionShell } from './section-shell'
 
 export function ProductExample() {
   return (
@@ -28,13 +28,13 @@ export function ProductExample() {
       mode="intelligence"
       surface="background"
     >
-      <ApplicationNavigation links={applicationLinks} activeHref="#decisions" className="px-0 md:px-8" />
+      <ApplicationNavigation links={applicationLinks} activeHref="#decisions" className="px-0 md:pr-8 md:pl-16" />
 
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="flex max-w-185 flex-col gap-4">
           <AnalyticalLabel tone="signal">DecisionOS · Capital allocation</AnalyticalLabel>
-          <h3 className="type-display-closing text-balance text-fg">Where should we allocate the next $10 million?</h3>
-          <p className="type-body-large text-pretty text-fg-secondary">
+          <h3 className="type-display-closing text-[40px]! leading-[46px]! text-fg">Where should we allocate the next $10 million?</h3>
+          <p className="type-body-default max-w-145 text-fg">
             Compare modeled response, management plan and actual performance before committing capital.
           </p>
         </div>
@@ -69,12 +69,17 @@ export function ProductExample() {
       </Tabs>
 
       <div className="grid gap-10 lg:grid-cols-3 lg:gap-9">
-        <Input label="Decision name" defaultValue="Q4 growth allocation" />
-        <ScenarioSelector defaultValue="scenario-03">
-          {scenarios.map((scenario) => (
-            <ScenarioIndicator key={scenario.value} {...scenario} />
-          ))}
-        </ScenarioSelector>
+        <Input label="Decision name" defaultValue="Q4 growth allocation" data-mode="light" />
+        <div className="flex flex-col gap-6">
+          <ScenarioSelector defaultValue="scenario-03">
+            {scenarios.map((scenario) => (
+              <div key={scenario.value} data-mode="light">
+                <ScenarioIndicator {...scenario} />
+              </div>
+            ))}
+          </ScenarioSelector>
+          <ScenarioStateSpec />
+        </div>
         <ConfidenceIndicator
           value={82}
           low={78}
@@ -97,18 +102,19 @@ export function ProductExample() {
         />
       </VisualizationContainer>
 
-      <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:gap-14">
-        <DataTable
-          caption="Scenario comparison"
-          columns={scenarioColumns}
-          rows={scenarioRows}
-          getRowKey={(row) => row.id}
-          selectedKey="reallocate"
-          className="lg:w-[60%]"
-        />
+      <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:gap-12">
+        <div data-mode="light" className="lg:w-185 lg:shrink-0">
+          <DataTable
+            caption="Scenario comparison"
+            columns={scenarioColumns}
+            rows={scenarioRows}
+            getRowKey={(row) => row.id}
+            selectedKey="reallocate"
+          />
+        </div>
         <div className="flex flex-col gap-3 lg:flex-1">
           <AnalyticalLabel>Integration result</AnalyticalLabel>
-          <p className="type-body-large text-pretty text-fg">
+          <p className="type-body-large leading-[27px]! text-fg">
             Navigation, metrics, states, selection, confidence, inputs, tabs, evidence and action share one hierarchy.
           </p>
         </div>
