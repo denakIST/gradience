@@ -1,6 +1,7 @@
 import { AnalyticalLabel } from '@/components/gradience/brand/analytical-label'
 import { Container, ModeSurface } from '@/components/gradience/layout/container'
 import { DecisionRail } from '@/components/gradience/analytical/decision-rail'
+import { ReturnPath } from '@/components/gradience/marketing/return-path'
 import { SectionIntro } from '@/components/gradience/marketing/section-intro'
 
 const lifecycle = ['Data', 'Model', 'Scenarios', 'Judgment', 'Decision', 'Outcome', 'Learning']
@@ -41,17 +42,25 @@ export function DecisionOS() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 border-t border-line pt-8">
+          <div className="flex flex-col gap-8 border-t border-line pt-10 md:pt-12">
             <AnalyticalLabel id="decisionos-lifecycle">Decision lifecycle</AnalyticalLabel>
-            <DecisionRail
-              stages={lifecycle}
-              activeIndex={4}
-              label="DecisionOS decision lifecycle"
-              className="md:flex-row md:flex-wrap md:justify-between md:gap-x-6"
-            />
-            <p className="type-supporting-small uppercase text-fg-secondary">
-              Learning returns to data · Each decision improves the next
-            </p>
+            <div className="flex flex-col gap-4">
+              <DecisionRail
+                stages={lifecycle}
+                activeIndex={4}
+                label="DecisionOS decision lifecycle"
+                className="md:grid md:grid-cols-4 md:gap-x-6 md:gap-y-2 lg:grid-cols-7 lg:border-t lg:border-line-strong lg:pt-6"
+              />
+              <ReturnPath
+                label="Learning returns to data · Each decision improves the next"
+                start="13px"
+                end="calc((100% + 1.5rem) * 6 / 7 + 13px)"
+                className="hidden lg:flex"
+              />
+              <p className="type-supporting-small uppercase text-fg-secondary lg:sr-only">
+                Learning returns to data · Each decision improves the next
+              </p>
+            </div>
           </div>
         </Container>
       </ModeSurface>

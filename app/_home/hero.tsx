@@ -13,7 +13,7 @@ import { primaryCta } from '@/lib/site'
 export function Hero() {
   return (
     <section aria-labelledby="hero-title" data-home-section="hero">
-      <Container className="grid grid-cols-1 gap-16 py-16 md:py-24 lg:grid-cols-12 lg:items-center lg:gap-x-(--grid-gutter) lg:py-32">
+      <Container className="grid grid-cols-1 gap-16 pt-12 pb-16 md:pt-20 md:pb-24 lg:grid-cols-12 lg:items-center lg:gap-x-(--grid-gutter) lg:pt-24 lg:pb-32">
         <div className="flex flex-col gap-8 lg:col-span-7">
           <AnalyticalLabel>Advanced Analytics for Better Business Decisions</AnalyticalLabel>
           <h1 id="hero-title" className="type-display-hero text-balance text-fg">
@@ -56,6 +56,7 @@ export function Hero() {
               selectedPoint={{ x: 82, y: 16 }}
               selected={{ label: 'Scenario 03', value: 'Δ Value +8.7%', detail: 'Confidence 82%' }}
               current={{ label: 'Current', detail: 'Baseline' }}
+              annotationPlacement={{ selected: 'leading', current: 'above' }}
             />
           </VisualizationContainer>
         </div>

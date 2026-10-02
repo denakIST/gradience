@@ -7,7 +7,13 @@ export function Judgment() {
       <Container className="grid grid-cols-1 gap-16 py-32 md:py-40 lg:grid-cols-12 lg:gap-x-(--grid-gutter)">
         <SectionIntro
           eyebrow="AI + Human Judgment"
-          title="AI that strengthens analysis—not replaces judgment."
+          title={
+            <>
+              AI that strengthens <span className="whitespace-nowrap">analysis—</span>
+              <wbr />
+              not replaces judgment.
+            </>
+          }
           titleId="judgment-title"
           className="lg:col-span-5"
         />
