@@ -15,7 +15,7 @@ const exampleDecisions = [
 export function FinalCta() {
   return (
     <section aria-labelledby="cta-title" data-home-section="cta" className="border-t border-line">
-      <Container className="grid grid-cols-1 gap-16 py-24 md:py-32 lg:grid-cols-12 lg:gap-x-(--grid-gutter)">
+      <Container className="grid grid-cols-1 gap-12 py-20 md:gap-16 md:py-26 lg:grid-cols-12 lg:gap-x-(--grid-gutter)">
         <div className="flex flex-col gap-6 lg:col-span-5">
           <AnalyticalLabel>Bring us a decision</AnalyticalLabel>
           <h2 id="cta-title" className="type-display-closing text-balance text-fg">

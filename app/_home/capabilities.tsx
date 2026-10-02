@@ -1,13 +1,39 @@
 import { TextLink } from '@/components/gradience/brand/text-link'
 import { Container } from '@/components/gradience/layout/container'
 import { SectionIntro } from '@/components/gradience/marketing/section-intro'
+import { CapabilitySignature, type CapabilitySignatureKind } from './capability-signature'
 
-const capabilities = [
-  { name: 'Forecasting & Scenario Intelligence', question: 'What is likely to happen—and what could change it?' },
-  { name: 'Measurement & Incrementality', question: 'What is actually creating growth?' },
-  { name: 'Investment Optimization', question: 'Where should the next dollar go?' },
-  { name: 'Pricing & Elasticity', question: 'What happens when price changes?' },
-  { name: 'Customer Intelligence', question: 'Where is the greatest customer opportunity?' },
+const capabilities: { name: string; question: string; signature: CapabilitySignatureKind; structure: string }[] = [
+  {
+    name: 'Forecasting & Scenario Intelligence',
+    question: 'What is likely to happen—and what could change it?',
+    signature: 'forecast',
+    structure: 'Observed trajectory · Baseline · Alternative futures',
+  },
+  {
+    name: 'Measurement & Incrementality',
+    question: 'What is actually creating growth?',
+    signature: 'measurement',
+    structure: 'Observed outcome · Baseline · Incremental contribution',
+  },
+  {
+    name: 'Investment Optimization',
+    question: 'Where should the next dollar go?',
+    signature: 'optimization',
+    structure: 'Current allocation · Alternatives · Selected opportunity',
+  },
+  {
+    name: 'Pricing & Elasticity',
+    question: 'What happens when price changes?',
+    signature: 'pricing',
+    structure: 'Price · Demand response · Revenue optimum',
+  },
+  {
+    name: 'Customer Intelligence',
+    question: 'Where is the greatest customer opportunity?',
+    signature: 'customer',
+    structure: 'Population · Segments · Opportunity concentration',
+  },
 ]
 
 export function Capabilities() {
@@ -28,10 +54,18 @@ export function Capabilities() {
           {capabilities.map((capability) => (
             <li
               key={capability.name}
-              className="grid grid-cols-1 gap-3 border-t border-line py-8 md:grid-cols-12 md:items-baseline md:gap-x-(--grid-gutter)"
+              className="grid grid-cols-1 gap-4 border-t border-line py-8 md:grid-cols-12 md:gap-x-(--grid-gutter) md:gap-y-6 lg:items-center"
             >
-              <h3 className="type-label-analytical text-fg md:col-span-5">{capability.name}</h3>
-              <p className="type-heading-question text-balance text-fg md:col-span-7">{capability.question}</p>
+              <h3 className="type-label-analytical text-fg md:col-span-5 lg:col-span-4">{capability.name}</h3>
+              <p className="type-heading-question text-balance text-fg md:col-span-7 lg:col-span-5">
+                {capability.question}
+              </p>
+              <figure className="flex flex-col gap-2 md:col-span-7 md:col-start-6 lg:col-span-3 lg:col-start-auto">
+                <CapabilitySignature kind={capability.signature} className="h-12 w-30 lg:h-14 lg:w-full lg:max-w-40" />
+                <figcaption className="type-supporting-small uppercase text-fg-secondary">
+                  {capability.structure}
+                </figcaption>
+              </figure>
             </li>
           ))}
         </ul>

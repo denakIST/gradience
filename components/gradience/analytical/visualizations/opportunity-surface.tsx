@@ -26,7 +26,19 @@ type OpportunitySurfaceProps = {
   selectedPoint?: Point
   decisionBoundaryX?: number
   size?: 'wide' | 'compact'
+  /**
+   * Annotation placement. Defaults reproduce the approved reference layout.
+   * - selected `leading`: right-aligned and ending before the selected point, in the open field above
+   *   the selected trajectory, so the trajectory never crosses the annotation (needed at `compact` size).
+   * - current `above`: placed above the current point, clear of the trajectory origin below it.
+   */
+  annotationPlacement?: {
+    selected?: 'top' | 'leading'
+    current?: 'below' | 'above'
+  }
 }
+
+const selectedLeadingGap = 12
 
 const gridStops = [20, 40, 60, 80]
 
@@ -38,8 +50,11 @@ export function OpportunitySurface({
   selectedPoint = { x: 89, y: 16 },
   decisionBoundaryX,
   size = 'wide',
+  annotationPlacement,
 }: OpportunitySurfaceProps) {
   const isCanonical = variant === 'canonical'
+  const selectedLeading = annotationPlacement?.selected === 'leading'
+  const currentAbove = annotationPlacement?.current === 'above'
 
   return (
     <div
@@ -131,8 +146,11 @@ export function OpportunitySurface({
       />
 
       <div
-        className="absolute flex flex-col gap-1"
-        style={{ left: `${currentPoint.x}%`, top: `calc(${currentPoint.y}% + 32px)` }}
+        className={cn('absolute flex flex-col gap-1', currentAbove && '-translate-y-full')}
+        style={{
+          left: `${currentPoint.x}%`,
+          top: currentAbove ? `calc(${currentPoint.y}% - 20px)` : `calc(${currentPoint.y}% + 32px)`,
+        }}
       >
         <span className="type-label-analytical text-fg-secondary">{current.label}</span>
         {current.detail ? (
@@ -140,7 +158,13 @@ export function OpportunitySurface({
         ) : null}
       </div>
 
-      <div className="absolute top-[8%] left-[44%] flex max-w-[50%] flex-col gap-1 sm:left-[61%]">
+      <div
+        className={cn(
+          'absolute flex max-w-[50%] flex-col gap-1',
+          selectedLeading ? 'top-[6%] items-end text-right' : 'top-[8%] left-[44%] sm:left-[61%]',
+        )}
+        style={selectedLeading ? { right: `calc(${100 - selectedPoint.x + selectedLeadingGap}% + 1rem)` } : undefined}
+      >
         <span className="type-label-analytical text-signal">{selected.label}</span>
         <span className="type-ui-default font-semibold text-fg sm:type-body-default sm:font-semibold">{selected.value}</span>
         {selected.detail ? (

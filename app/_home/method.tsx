@@ -1,5 +1,6 @@
 import { AnalyticalLabel } from '@/components/gradience/brand/analytical-label'
 import { Container } from '@/components/gradience/layout/container'
+import { ReturnPath } from '@/components/gradience/marketing/return-path'
 import { SectionIntro } from '@/components/gradience/marketing/section-intro'
 import { cn } from '@/lib/utils'
 
@@ -7,9 +8,11 @@ const steps = [
   { name: 'Understand', description: 'Identify what drives performance.' },
   { name: 'Predict', description: 'Model what is likely to happen.' },
   { name: 'Optimize', description: 'Evaluate alternatives and tradeoffs.' },
-  { name: 'Decide', description: 'Translate evidence into action.', selected: true },
+  { name: 'Decide', description: 'Translate evidence into action.' },
   { name: 'Learn', description: 'Compare expectations with outcomes and improve future decisions.' },
 ]
+
+const returnLabel = 'Learning informs the next cycle'
 
 export function Method() {
   return (
@@ -24,7 +27,7 @@ export function Method() {
           <p>One connected analytical process, from the drivers of performance to the decision, and back again.</p>
         </SectionIntro>
 
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-8">
           <ol aria-label="Gradience Method sequence" className="grid grid-cols-1 md:grid-cols-5">
             {steps.map((step, index) => (
               <li
@@ -37,22 +40,20 @@ export function Method() {
               >
                 <span
                   aria-hidden="true"
-                  className={cn(
-                    'absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full',
-                    step.selected
-                      ? 'size-(--viz-point-selected) border-(length:--viz-point-ring) border-background bg-selected'
-                      : 'size-(--viz-point-current) bg-viz-current',
-                  )}
+                  className="absolute top-0 left-0 size-(--viz-point-current) -translate-x-1/2 -translate-y-1/2 rounded-full bg-viz-current"
                 />
                 <h3 className="type-label-analytical text-fg">
+                  <span className="sr-only">{`Step ${index + 1}: `}</span>
                   {step.name}
-                  {step.selected ? <span className="sr-only"> (the point of decision)</span> : null}
                 </h3>
                 <p className="type-body-default text-pretty text-fg-secondary">{step.description}</p>
               </li>
             ))}
           </ol>
-          <AnalyticalLabel>Learn → Understand · Each outcome informs the next decision</AnalyticalLabel>
+
+          <ReturnPath label={returnLabel} end="80%" className="hidden md:flex" />
+          <AnalyticalLabel className="md:hidden">{`Learn → Understand · ${returnLabel}`}</AnalyticalLabel>
+          <p className="sr-only">After Learn, the cycle returns to Understand: {returnLabel.toLowerCase()}.</p>
         </div>
       </Container>
     </section>
